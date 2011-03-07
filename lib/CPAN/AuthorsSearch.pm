@@ -4,15 +4,15 @@ use strict; use warnings;
 
 =head1 NAME
 
-CPAN::AuthorsSearch - A very simple module for searching CPAN module authors.
+CPAN::AuthorsSearch - Interface to CPAN module author search.
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 our $DEBUG   = 0;
 
 use Carp;

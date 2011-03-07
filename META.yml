@@ -1,5 +1,5 @@
 ---
-abstract: 'A very simple module for searching CPAN module authors.'
+abstract: 'Interface to CPAN module author search.'
 author:
   - 'Mohammad S Anwar <mohammad.anwar@yahoo.com>'
 build_requires:
@@ -18,7 +18,7 @@ name: CPAN-AuthorsSearch
 provides:
   CPAN::AuthorsSearch:
     file: lib/CPAN/AuthorsSearch.pm
-    version: 0.01
+    version: 0.02
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.01
+version: 0.02
