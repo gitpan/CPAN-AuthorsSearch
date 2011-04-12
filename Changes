@@ -1,5 +1,14 @@
 Revision history for CPAN::AuthorsSearch
 
+0.03    Tue Apr 12 14:45:11 2011
+        - Updated SYNOPSIS.
+        - Added example to pod for method by_id().
+        - Added example to pod for method where_id_starts_with().
+        - Added example to pod for mehod where_name_contains().
+        - Added validation check for letter for method where_id_starts_with().
+        - Added test for method where_id_starts_with() to the 01-test-case.t.
+        - Added method as_string() for easy printing of search results.
+
 0.02    Mon Mar 07 13:01:15 2011
         - Updated brief description of module name  as recommended by brian d foy.
 

@@ -1,13 +1,17 @@
 #!perl
 
+use strict; use warnings;
 use Test::More;
 use CPAN::AuthorsSearch;
 
-my ($search, $name);
+my ($search, $result);
 $search = CPAN::AuthorsSearch->new();
-eval { $name   = $search->by_id('MANWAR'); };
+eval { $result = $search->by_id('MANWAR'); };
 plan skip_all => "It appears you don't have internet access."
     if ($@ =~ /ERROR\: Couldn\'t connect to search\.cpan\.org/);
-is($name, 'Mohammad S Anwar');
+is($result, 'Mohammad S Anwar');
+
+eval { $result = $search->where_id_starts_with('1'); };
+like($@, qr/ERROR: Invalid letter \[1\]./);
 
 done_testing();

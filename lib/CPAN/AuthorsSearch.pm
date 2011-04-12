@@ -2,17 +2,19 @@ package CPAN::AuthorsSearch;
 
 use strict; use warnings;
 
+use overload q("") => \&as_string, fallback => 1;
+
 =head1 NAME
 
 CPAN::AuthorsSearch - Interface to CPAN module author search.
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 our $DEBUG   = 0;
 
 use Carp;
@@ -23,19 +25,10 @@ use HTML::Entities qw/decode_entities/;
 
 =head1 SYNOPSIS
 
-    use CPAN::AuthorsSearch;
-    my $search = CPAN::AuthorsSearch->new();
-    
-    my $name   = $search->by_id('MANWAR');
-    # $name should have 'Mohammad S Anwar'
-    
-    my $list   = $search->where_name_contains('MAN');
-    # $list should have
-    # {
-    #    'umvue'  => 'Yee Man Chan',
-    #    'lwall'  => 'Larry Wall. Author of Perl. Busy man.',
-    #    'kinman' => 'Kin man, Cheung'
-    # }
+CPAN::AuthorsSearch is an attempt to provide a programmatical interface to CPAN Search engine. 
+CPAN Search is a search engine for the distributions, modules, docs, and ID's on CPAN. It was 
+conceived  and  built by  Graham Barr  as a way to make things easier to navigate. Originally 
+named TUCS [ The Ultimate CPAN Search ] it was later named CPAN Search or Search DOT CPAN.
 
 =cut
 
@@ -50,11 +43,16 @@ sub new
 
 =head1 METHODS
 
-=head2 by_id
+=head2 by_id()
 
 This method accepts CPAN ID exactly as provided by CPAN. It does realtime search on CPAN site and  fetch
 the author name for the given CPAN ID. However it would croak if it can't access the CPAN site or unable 
 to get any response for the given CPAN ID.
+
+    use strict; use warnings;
+    use CPAN::AuthorsSearch;
+    my $search = CPAN::AuthorsSearch->new();
+    my $result = $search->by_id('MANWAR');
 
 =cut
 
@@ -79,26 +77,37 @@ sub by_id
         s/\s+$//g;
         if (/\<p\>\<h2 class\=sr\>\<a href\=\"\/\~(.*)\/\"\><b>(.*)<\/b\>/)
         {
-            return decode_entities($2)
-                if (uc($id) eq uc($1));
+            if (uc($id) eq uc($1))
+            {
+                $self->{result} = decode_entities($2);
+                return $self->{result};
+            }    
         }
     }
+    $self->{result} = undef;
     return;
 }
 
-=head2 where_id_starts_with
+=head2 where_id_starts_with()
 
 This method accepts an alphabet (A-Z) and get the list of authors that start with the  given
 alphabet from CPAN site realtime. However it would croak if it can't access the CPAN site or 
 unable to get any response for the given CPAN ID.
 
+    use strict; use warnings;
+    use CPAN::AuthorsSearch;
+    my $search = CPAN::AuthorsSearch->new();
+    my $result = $search->where_id_starts_with('M');
+
 =cut
 
 sub where_id_starts_with
 {
-    my $self     = shift;
-    my $letter   = shift;
-    
+    my $self   = shift;
+    my $letter = shift;
+    croak("ERROR: Invalid letter [$letter].\n")
+        unless ($letter =~ /[A-Z]/i);
+        
     my $browser  = $self->{_browser};
     my $request  = HTTP::Request->new(POST=>qq[http://search.cpan.org/author/?$letter]);
     my $response = $browser->request($request);
@@ -123,11 +132,16 @@ sub where_id_starts_with
     return @authors;
 }
 
-=head2 where_name_contains
+=head2 where_name_contains()
 
 This method accepts a search string and look for the string in the author's name of all the CPAN modules
 realtime and returns the a reference to a hash containing id, name pair containing the search string. It
 croaks if unable to access the search.cpan.org.
+
+    use strict; use warnings;
+    use CPAN::AuthorsSearch;
+    my $search = CPAN::AuthorsSearch->new();
+    my $result = $search->where_name_contains('MAN');
 
 =cut
 
@@ -157,7 +171,33 @@ sub where_name_contains
             $authors->{$1} = decode_entities($2);
         }
     }
+    $self->{result} = $authors;
     return $authors;
+}
+
+=head2 as_string()
+
+Return the last search result in human readable format.
+
+    use strict; use warnings;
+    use CPAN::AuthorsSearch;
+    my $search = CPAN::AuthorsSearch->new();
+    my $result = $search->where_name_contains('MAN');
+    print $search;
+
+=cut
+
+sub as_string
+{
+    my $self = shift;
+    return $self->{result} unless ref($self->{result});
+    
+    my $string;
+    foreach (keys %{$self->{result}})
+    {
+        $string .= sprintf("%s: %s\n", $_, $self->{result}->{$_});
+    }
+    return $string;
 }
 
 =head1 AUTHOR
