@@ -10,11 +10,11 @@ CPAN::AuthorsSearch - Interface to CPAN module author search.
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 our $DEBUG   = 0;
 
 use Carp;
@@ -183,7 +183,11 @@ Return the last search result in human readable format.
     use CPAN::AuthorsSearch;
     my $search = CPAN::AuthorsSearch->new();
     my $result = $search->where_name_contains('MAN');
-    print $search;
+    print $search->as_string();
+	
+	# or simply
+	
+	print $search;
 
 =cut
 
@@ -206,9 +210,9 @@ Mohammad S Anwar, C<< <mohammad.anwar at yahoo.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-cpan-authorssearch at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=CPAN-AuthorsSearch>.  
-I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
+Please  report any bugs or feature requests to C<bug-cpan-authorssearch at rt.cpan.org>,  or through the 
+web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=CPAN-AuthorsSearch>.I will be notified, 
+and then you'll automatically be notified of progress on your bug as I make changes.
 
 =head1 SUPPORT
 
@@ -242,15 +246,15 @@ L<http://search.cpan.org/dist/CPAN-AuthorSearch/>
 
 Copyright 2011 Mohammad S Anwar.
 
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
+This  program  is free software; you can redistribute it and/or modify it under the terms of either: the 
+GNU General Public License as published by the Free Software Foundation; or the Artistic License.
 
 See http://dev.perl.org/licenses/ for more information.
 
 =head1 DISCLAIMER
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+This program  is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;  without even
+the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 =cut
 

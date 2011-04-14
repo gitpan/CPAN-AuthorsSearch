@@ -1,5 +1,9 @@
 Revision history for CPAN::AuthorsSearch
 
+0.04    Thu Apr 14 10:04:00 2011
+        - Updated example pod for method as_string().
+        - Minor cosmetics changes.
+
 0.03    Tue Apr 12 14:45:11 2011
         - Updated SYNOPSIS.
         - Added example to pod for method by_id().
