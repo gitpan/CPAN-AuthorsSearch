@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.66.
+signed via the Module::Signature module, version 0.68.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -15,13 +15,13 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 63ce94161c080f00ccab1384774c6a9206144d7c Build.PL
-SHA1 8ef4489393ccc444da2be4d71c9ff4295e0014e3 Changes
+SHA1 70519707d4340a23c484e83ec7d36a5bb48629f5 Changes
 SHA1 89ed60ea87fde71aa6cd94a7c80a03165ca82a55 MANIFEST
 SHA1 7d20e4e840781030202bb045d5ab81b3fd1b68b0 MANIFEST.SKIP
-SHA1 f3de17f37cf3f33b0ba298587ddbdfedb7be7355 META.yml
+SHA1 cdac54587a10af2f5bf2f6c1a1ff2b693ba34686 META.yml
 SHA1 2d966f53d732876d27040ef7be116e3ff47bc54f Makefile.PL
-SHA1 007fdfe505e83e4fbb2b67293ca8246a69b2b992 README
-SHA1 36b177334fc30cbdffaec29906b1b2bf60b194a3 lib/CPAN/AuthorsSearch.pm
+SHA1 2518105306f24ae04f7cd35c453eab2d98d23447 README
+SHA1 89647c096b35aaeab75509117ffd0c5ae24aca00 lib/CPAN/AuthorsSearch.pm
 SHA1 d66221264feabc3510d9664dec690ce5bb8b0bf6 t/00-load.t
 SHA1 b05784251f5208104053b45acb7e6a0d64a72861 t/01-test-case.t
 SHA1 2b8ffb7e4f399af95d092743846ac8d438f2c53e t/manifest.t
@@ -29,11 +29,11 @@ SHA1 0765c9ff0cc4319f415bb08d0053b7717a8284a2 t/pod.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2.0.14 (MingW32)
 
-iQEcBAEBAgAGBQJNrUyYAAoJEPYcXBXhRYOhoXEH+waIasqm3hFrYFldfIhmRDAE
-4Vr+csWXUhqKAdupVUNEaWYq+fjlfL356UiXPMjpJZC66CY36g/Zzk6ygHbsKKhg
-oSeOEXVz43JfW9v8bk22gJPOVRzAvx08HEeQ7em1C901LOxthQZeIH5p/jb1T/Um
-R1aM3rrRy/v4RLgxkKJzrpOPRJoJSZ06gysRgWWFT5clDKznrlvltXVJDOWtLlbZ
-BDmRuzRS1CLl/KSgkheXG5eERbOuy28B35nntwdPXWbGAlb2o5J0Lm363tr3syNj
-VudRlFPeR/mdsDOBaP9np3T+7YQ5Tyf66uJXil/aLmuWw5F8HQC6+YfawTHgx7o=
-=olP9
+iQEcBAEBAgAGBQJOQU3rAAoJEPYcXBXhRYOhHw8H/jFVj5ZoGMVEs7H2jtDVt//L
+IRxhwpx/btmjzBVUZ512qC3XpU68XsyPDGPoelJuT0wVRrsTLEJHflLRMVo+A+9s
+pYfA9ks5FrmfNYQmhZB/OI+ck8KUJK5tMHhxb1/xt06M0n9pTdwTWrZslGgw/2ln
+RxLdPaIkKKYf+VEnVD4/BCb2LTGD/KQfSqiHLpoOacVQf1HgKSrmCWdYGncd5qkR
+KsNtYrmzhkEMs5xHoBVKx4RbBVtxhHc9qkQQOaEc6PRIrPt4MPyirjSK0YtPijaT
+VXL1/44Qr4i7giZjjI2euWQ6eSVX9nMxEWWUnsKMz1btY/zeV68lchhnQSU8l0U=
+=nzG5
 -----END PGP SIGNATURE-----

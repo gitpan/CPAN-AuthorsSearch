@@ -10,11 +10,11 @@ CPAN::AuthorsSearch - Interface to CPAN module author search.
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =cut
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 our $DEBUG   = 0;
 
 use Carp;
@@ -62,6 +62,7 @@ sub by_id
     my $id       = shift;
 
     my $browser  = $self->{_browser};
+    $browser->env_proxy;
     my $request  = HTTP::Request->new(POST=>qq[http://search.cpan.org/search?query=$id&mode=author]);
     my $response = $browser->request($request);
     print {*STDOUT} "Search By Id [$id] Status: " . $response->status_line . "\n" if $DEBUG;
@@ -109,6 +110,7 @@ sub where_id_starts_with
         unless ($letter =~ /[A-Z]/i);
 
     my $browser  = $self->{_browser};
+    $browser->env_proxy;
     my $request  = HTTP::Request->new(POST=>qq[http://search.cpan.org/author/?$letter]);
     my $response = $browser->request($request);
     print {*STDOUT} "Search Id Starts With [$letter] Status: " . $response->status_line . "\n" if $DEBUG;
@@ -151,6 +153,7 @@ sub where_name_contains
     my $query    = shift;
 
     my $browser  = $self->{_browser};
+    $browser->env_proxy;
     my $request  = HTTP::Request->new(POST=>qq[http://search.cpan.org/search?query=$query&mode=author]);
     my $response = $browser->request($request);
     print {*STDOUT} "Search By Name Contains [$query] Status: " . $response->status_line . "\n" if $DEBUG;

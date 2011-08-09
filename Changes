@@ -1,5 +1,8 @@
 Revision history for CPAN::AuthorsSearch
 
+0.06    Tue Aug 09 16:06:11 2011
+        - Prepared the distribution using the Module::Signature v0.68.
+
 0.05    Tue Apr 19 09:47:35 2011
         - Renamed title "SYNOPSIS" to "DESCRIPTION".
         - Minor cosmetics changes.
